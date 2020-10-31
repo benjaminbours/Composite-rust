@@ -6,7 +6,8 @@ edition = "2018"
 
 [dependencies]
 objc = "=0.2.6"
+amethyst = "0.15.2"
 
-[dependencies.amethyst]
-version = "0.13"
-features = ["metal", "nightly"]
+[features]
+default = ["vulkan"]
+vulkan = ["amethyst/vulkan"]
