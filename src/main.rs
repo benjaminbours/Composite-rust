@@ -1,8 +1,9 @@
 mod composite;
-mod systems;
 mod states;
+mod systems;
 
 use amethyst::{
+    assets::PrefabLoaderSystemDesc,
     core::transform::TransformBundle,
     error::Error,
     input::{InputBundle, StringBindings},
@@ -17,9 +18,9 @@ use amethyst::{
     utils::{application_root_dir, fps_counter::FpsCounterBundle},
 };
 
-// use crate::composite::Composite;
-use crate::systems::FpsSystem;
+use crate::composite::MyPrefabData;
 use crate::states::Loading;
+use crate::systems::FpsSystem;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -31,6 +32,7 @@ fn main() -> amethyst::Result<()> {
     let display_config_path = app_root.join("config").join("display.ron");
 
     let game_data = GameDataBuilder::default()
+        .with_system_desc(PrefabLoaderSystemDesc::<MyPrefabData>::default(), "", &[])
         .with(FpsSystem::default(), "fps_system", &[])
         .with_bundle(InputBundle::<StringBindings>::new())?
         .with_bundle(FpsCounterBundle::default())?
