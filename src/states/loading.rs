@@ -1,5 +1,3 @@
-// mod composite;
-
 use amethyst::{
     assets::{
         Completion, Handle, HotReloadBundle, Prefab, PrefabLoader, PrefabLoaderSystemDesc,
@@ -18,7 +16,9 @@ pub struct Loading {
 
 impl SimpleState for Loading {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
-        data.world.exec(|mut creator: UiCreator<'_>| {
+        let world = data.world;
+
+        world.exec(|mut creator: UiCreator<'_>| {
             creator.create("ui/fps.ron", &mut self.progress);
             creator.create("ui/loading.ron", &mut self.progress);
         });

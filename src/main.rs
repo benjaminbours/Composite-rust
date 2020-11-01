@@ -13,7 +13,10 @@ use amethyst::{
     utils::{application_root_dir, fps_counter::FpsCounterBundle},
 };
 
+mod components;
 mod composite;
+mod entities;
+mod resources;
 mod states;
 mod systems;
 
