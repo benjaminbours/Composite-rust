@@ -1,7 +1,3 @@
-mod composite;
-mod states;
-mod systems;
-
 use amethyst::{
     assets::PrefabLoaderSystemDesc,
     core::transform::TransformBundle,
@@ -18,6 +14,10 @@ use amethyst::{
     utils::{application_root_dir, fps_counter::FpsCounterBundle},
 };
 
+mod composite;
+mod states;
+mod systems;
+mod components;
 use crate::composite::MyPrefabData;
 use crate::states::Loading;
 use crate::systems::FpsSystem;
