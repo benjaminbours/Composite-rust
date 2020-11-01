@@ -1,6 +1,4 @@
-use amethyst::{
-    core::*, derive::SystemDesc, ecs::prelude::*, prelude::*, ui::*, utils::fps_counter::*,
-};
+use amethyst::{core::*, derive::SystemDesc, ecs::prelude::*, ui::*, utils::fps_counter::*};
 
 #[derive(Default, SystemDesc)]
 pub struct FpsSystem {

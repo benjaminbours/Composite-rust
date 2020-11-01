@@ -1,7 +1,6 @@
 use amethyst::{
     assets::PrefabLoaderSystemDesc,
     core::transform::TransformBundle,
-    error::Error,
     input::{InputBundle, StringBindings},
     prelude::*,
     renderer::{
@@ -17,10 +16,10 @@ use amethyst::{
 mod composite;
 mod states;
 mod systems;
-mod components;
+
 use crate::composite::MyPrefabData;
 use crate::states::Loading;
-use crate::systems::FpsSystem;
+use crate::systems::*;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -34,6 +33,11 @@ fn main() -> amethyst::Result<()> {
     let game_data = GameDataBuilder::default()
         .with_system_desc(PrefabLoaderSystemDesc::<MyPrefabData>::default(), "", &[])
         .with(FpsSystem::default(), "fps_system", &[])
+        .with(
+            PlayerCollisionSystem,
+            "player_collision_system",
+            &[], // &["collision_system"],
+        )
         .with_bundle(InputBundle::<StringBindings>::new())?
         .with_bundle(FpsCounterBundle::default())?
         .with_bundle(TransformBundle::new())?

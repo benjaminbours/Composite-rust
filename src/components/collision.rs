@@ -3,6 +3,26 @@ use amethyst::{
     ecs::{Component, DenseVecStorage},
 };
 
+#[derive(Component)]
+#[storage(DenseVecStorage)]
+pub struct Boundary {
+    pub left: f32,
+    pub right: f32,
+    pub top: f32,
+    pub bottom: f32,
+}
+
+impl Boundary {
+    pub fn new(left: f32, right: f32, top: f32, bottom: f32) -> Self {
+        Self {
+            left,
+            right,
+            top,
+            bottom,
+        }
+    }
+}
+
 #[derive(Clone)]
 pub struct GenericBox {
     pub half_size: Vector2<f32>,
@@ -26,6 +46,29 @@ impl GenericBox {
             half_size: Vector2::new(width / 2., height / 2.),
             position: Vector2::new(0., 0.),
             old_position: Vector2::new(0., 0.),
+        }
+    }
+}
+
+pub struct CollideeDetails {
+    pub name: String,
+    pub position: Vector2<f32>,
+    pub half_size: Vector2<f32>,
+    pub correction: f32,
+}
+
+#[derive(Component)]
+#[storage(DenseVecStorage)]
+pub struct Collidee {
+    pub horizontal: Option<CollideeDetails>,
+    pub vertical: Option<CollideeDetails>,
+}
+
+impl Default for Collidee {
+    fn default() -> Self {
+        Self {
+            horizontal: None,
+            vertical: None,
         }
     }
 }
