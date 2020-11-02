@@ -10,7 +10,10 @@ use amethyst::{
     utils::scene::BasicScenePrefab, // ui::{Anchor, TtfFormat, UiText, UiTransform, UiCreator},
 };
 
-use crate::{entities::load_player, resources::Context};
+use crate::{
+    entities::{load_camera, load_player},
+    resources::Context,
+};
 
 pub type MyPrefabData = BasicScenePrefab<(Vec<Position>, Vec<Normal>, Vec<TexCoord>)>;
 
@@ -26,13 +29,11 @@ impl SimpleState for BasicScene {
         let ctx = *world.read_resource::<Context>();
         load_player(world, &ctx);
 
+        load_camera(world);
+
         let handle = world.exec(|loader: PrefabLoader<'_, MyPrefabData>| {
             loader.load("prefab/basic_scene.ron", RonFormat, ())
         });
         world.create_entity().with(handle).build();
-
-        let ctx = *world.read_resource::<Context>();
-
-        load_player(world, &ctx);
     }
 }

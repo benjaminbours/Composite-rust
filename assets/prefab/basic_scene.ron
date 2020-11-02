@@ -30,18 +30,18 @@ Prefab(
                 ),
             ),
         ),
-        (
-            data: (
-                transform: (
-                    translation: (0.0, 0.0, 10.0),
-                ),
-                camera: Perspective(
-                    aspect: 1.0,
-                    fovy: 1.0471975512,
-                    znear: 0.1,
-                    zfar: 1000.0,
-                )
-            ),
-        ),
+        // (
+        //     data: (
+        //         transform: (
+        //             translation: (0.0, 0.0, 10.0),
+        //         ),
+        //         camera: Perspective(
+        //             aspect: 1.0,
+        //             fovy: 1.0471975512,
+        //             znear: 0.1,
+        //             zfar: 1000.0,
+        //         )
+        //     ),
+        // ),
     ],
 )
