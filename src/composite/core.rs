@@ -23,6 +23,9 @@ impl SimpleState for BasicScene {
 
         world.insert(Context::new());
 
+        let ctx = *world.read_resource::<Context>();
+        load_player(world, &ctx);
+
         let handle = world.exec(|loader: PrefabLoader<'_, MyPrefabData>| {
             loader.load("prefab/basic_scene.ron", RonFormat, ())
         });

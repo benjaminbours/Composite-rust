@@ -5,7 +5,7 @@ use amethyst::{
     prelude::*,
     renderer::{
         palette::Srgb,
-        plugins::{RenderShaded3D, RenderSkybox, RenderToWindow},
+        plugins::{RenderPbr3D, RenderShaded3D, RenderSkybox, RenderToWindow},
         types::DefaultBackend,
         RenderingBundle,
     },
@@ -47,13 +47,13 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
             RenderingBundle::<DefaultBackend>::new()
-                .with_plugin(RenderToWindow::from_config_path(display_config_path)?)
-                .with_plugin(RenderShaded3D::default())
+                .with_plugin(RenderToWindow::from_config_path(display_config_path)?.with_clear([0.34, 0.36, 0.52, 1.0]))
+                .with_plugin(RenderPbr3D::default())
                 .with_plugin(RenderUi::default())
-                .with_plugin(RenderSkybox::with_colors(
-                    Srgb::new(0.82, 0.51, 0.50),
-                    Srgb::new(0.18, 0.11, 0.85),
-                )),
+                // .with_plugin(RenderSkybox::with_colors(
+                //     Srgb::new(0.82, 0.51, 0.50),
+                //     Srgb::new(0.18, 0.11, 0.85),
+                // )),
         )?;
     let mut game = Application::new(assets_dir, Loading::default(), game_data)?;
     game.run();
