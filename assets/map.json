@@ -1,0 +1,28 @@
+{
+  "layers": [
+    {
+      "name": "collision",
+      "opacity": 1,
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "objects": [
+        {
+          "width": 10,
+          "height": 10,
+          "depth": 10,
+          "name": "",
+          "rotation": 0,
+          "visible": true,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "width": 144,
+  "height": 22,
+  "depth": 22
+}
