@@ -1,3 +1,3 @@
-mod loading;
+mod game;
 
-pub use self::loading::Loading;
+pub use self::game::*;
